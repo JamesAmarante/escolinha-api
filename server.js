@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+require('dotenv').config();
 const router = require("./rotas/route")
 const seque = require('./model/connection/conexao')
 const Pofessor = require('./model/entity/professor') // Importa a variavel para gerar a tabela no banco
@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(router)
 app.use(express.static(`${__dirname}/upload`))
 
-app.listen(port, async (error) => {
+app.listen(`${process.env.PORT || 3000}`, async (error) => {
   if (error) {
     console.log("Deu erro");
     return;
